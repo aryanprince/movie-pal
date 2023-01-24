@@ -59,7 +59,6 @@ const App = () => {
           <div>
             <span>{AvengersMovieObject.Type}</span>
             <h3>{AvengersMovieObject.Title}</h3>
-            <p>{AvengersMovieObject.Year}</p>
           </div>
         </div>
       </div>
