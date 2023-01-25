@@ -1,30 +1,25 @@
-import React, { useEffect } from "react";
-
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import SearchIcon from "./assets/search.svg";
+import MovieCard from "./components/MovieCard";
 
 const API_URL = `http://www.omdbapi.com?apikey=${process.env.REACT_APP_OMDB_API_KEY}`;
 
-const AvengersMovieObject = {
-  Title: "The Avengers",
-  Year: "2012",
-  imdbID: "tt0848228",
-  Type: "movie",
-  Poster:
-    "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
-};
+function App() {
+  const [allMovies, setAllMovies] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const timeoutRef = useRef(null);
 
-const App = () => {
   const searchMovies = async (title) => {
     const response = await fetch(`${API_URL}&s=${title}`);
     const data = await response.json();
 
-    console.log(data.Search);
+    setAllMovies(data.Search);
   };
 
   useEffect(() => {
-    searchMovies("Avengers");
-  }, []);
+    searchMovies(searchTerm);
+  }, [searchTerm]);
 
   return (
     <div className="app">
@@ -33,37 +28,24 @@ const App = () => {
       <div className="search">
         <input
           placeholder="Search for movies"
-          value="Hereditary"
-          onChange={() => {}}
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <img src={SearchIcon} alt="Search Icon" onClick={() => {}} />
+        <img
+          src={SearchIcon}
+          alt="Search Icon"
+          onClick={() => searchMovies(searchTerm)}
+        />
       </div>
 
       <div className="container">
-        <div className="movie">
-          <div>
-            <p>{AvengersMovieObject.Year}</p>
-          </div>
-
-          <div>
-            <img
-              src={
-                AvengersMovieObject.Poster !== "N/A"
-                  ? AvengersMovieObject.Poster
-                  : "https://via.placeholder.com/400"
-              }
-              alt={AvengersMovieObject.Title}
-            />
-          </div>
-
-          <div>
-            <span>{AvengersMovieObject.Type}</span>
-            <h3>{AvengersMovieObject.Title}</h3>
-          </div>
-        </div>
+        {allMovies &&
+          allMovies.map((movie) => (
+            <MovieCard key={movie.imdbID} movie={movie} />
+          ))}
       </div>
     </div>
   );
-};
+}
 
 export default App;
