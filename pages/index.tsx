@@ -9,7 +9,7 @@ export default function Home() {
   const [allMovies, setAllMovies] = useState<MovieType[]>([])
   const [searchTerm, setSearchTerm] = useState('')
 
-  const API_URL = `http://www.omdbapi.com?apikey=${process.env.NEXT_PUBLIC_OMDB_API_KEY}`
+  const API_URL = `https://www.omdbapi.com?apikey=${process.env.NEXT_PUBLIC_OMDB_API_KEY}`
 
   const searchMovies = async (title: string) => {
     const response = await fetch(`${API_URL}&s=${title}`)
