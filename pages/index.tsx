@@ -16,6 +16,7 @@ export default function Home() {
     const data = await response.json()
 
     setAllMovies(data.Search)
+    console.log(data.Search)
   }
 
   return (
