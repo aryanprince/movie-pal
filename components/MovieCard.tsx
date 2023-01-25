@@ -34,10 +34,10 @@ const MovieCard: React.FC<Props> = ({ movie }) => {
       </div>
 
       <div>
-        <span className="font-semibold text-sm tracking-wide">
+        <span className="text-sm font-semibold tracking-wide">
           {movie.Type}
         </span>
-        <h3 className="font-medium text-md tracking-wide">{movie.Title}</h3>
+        <h3 className="text-md font-medium tracking-wide">{movie.Title}</h3>
       </div>
     </div>
   )
