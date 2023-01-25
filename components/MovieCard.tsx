@@ -1,15 +1,16 @@
-import Image from "next/image";
-import React from "react";
+import Image from 'next/image'
+import React from 'react'
 
-interface Movie {
-  Year: string;
-  Poster: string;
-  Title: string;
-  Type: string;
+export type MovieType = {
+  Year: string
+  Poster: string
+  Title: string
+  Type: string
+  imdbID?: string
 }
 
-interface Props {
-  movie: Movie;
+type Props = {
+  movie: MovieType
 }
 
 const MovieCard: React.FC<Props> = ({ movie }) => {
@@ -22,9 +23,9 @@ const MovieCard: React.FC<Props> = ({ movie }) => {
       <div>
         <Image
           src={
-            movie.Poster !== "N/A"
+            movie.Poster !== 'N/A'
               ? movie.Poster
-              : "https://via.placeholder.com/400"
+              : 'https://via.placeholder.com/400'
           }
           alt={movie.Title}
           width={400}
@@ -37,7 +38,7 @@ const MovieCard: React.FC<Props> = ({ movie }) => {
         <h3>{movie.Title}</h3>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default MovieCard;
+export default MovieCard

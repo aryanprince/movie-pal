@@ -1,24 +1,15 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useState } from 'react'
-// import { Inter } from '@next/font/google'
 
+import type { MovieType } from '../components/MovieCard'
 import MovieCard from '../components/MovieCard'
 
-// const inter = Inter({ subsets: ['latin'] })
-const API_URL = `http://www.omdbapi.com?apikey=${process.env.NEXT_PUBLIC_OMDB_API_KEY}`
-
-interface Movie {
-  Year: string
-  Poster: string
-  Title: string
-  Type: string
-  imdbID: string
-}
-
 export default function Home() {
-  const [allMovies, setAllMovies] = useState<Movie[]>([])
+  const [allMovies, setAllMovies] = useState<MovieType[]>([])
   const [searchTerm, setSearchTerm] = useState('')
+
+  const API_URL = `http://www.omdbapi.com?apikey=${process.env.NEXT_PUBLIC_OMDB_API_KEY}`
 
   const searchMovies = async (title: string) => {
     const response = await fetch(`${API_URL}&s=${title}`)
@@ -61,7 +52,7 @@ export default function Home() {
 
         <div className="container">
           {allMovies &&
-            allMovies.map((movie: Movie) => (
+            allMovies.map((movie: MovieType) => (
               <MovieCard key={movie.imdbID} movie={movie} />
             ))}
         </div>
