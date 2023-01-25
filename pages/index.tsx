@@ -30,7 +30,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex flex-col content-center items-center p-16">
-        <h1 className="font-extrabold tracking-tight">MoviePal</h1>
+        <h1 className="w-fit text-5xl font-bold tracking-tight text-[#ebac95]">
+          MoviePal
+        </h1>
         <h2 className="text-xl font-medium text-white">
           Find your favourite movies and shows
         </h2>
