@@ -1,7 +1,7 @@
-import { Inter } from "@next/font/google";
 import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { Inter } from "@next/font/google";
 
 import MovieCard from "../components/MovieCard";
 
@@ -35,13 +35,18 @@ export default function Home() {
     <>
       <Head>
         <title>MoviePal</title>
-        <meta name="description" content="Find your favourite movies and shows with MoviePal. Created by @aryanprince." />
+        <meta
+          name="description"
+          content="Find your favourite movies and shows with MoviePal. Created by @aryanprince."
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="app">
         <h1>MoviePal</h1>
-        <h2 className={inter.className}>Find your favourite movies and shows</h2>
+        <h2 className={`${inter.className} text-white text-xl font-medium`}>
+          Find your favourite movies and shows
+        </h2>
 
         <div className="search">
           <input
