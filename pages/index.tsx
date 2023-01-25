@@ -29,28 +29,32 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="app">
-        <h1 className="font-extrabold tracking-tight">MoviePal</h1>
-        <h2 className="text-white text-xl font-medium">
+      <div className="flex flex-col content-center items-center p-16">
+        <h1 className="w-fit text-5xl font-bold tracking-tight text-[#ebac95]">
+          MoviePal
+        </h1>
+        <h2 className="text-xl font-medium text-white">
           Find your favourite movies and shows
         </h2>
 
-        <div className="search">
+        <div className="search mx-0 mt-16 mb-8 flex w-5/12 content-center items-center rounded-3xl bg-[#1f2123] py-5 px-7 shadow-[5px_5px_7px_#1c1d1f,_-5px_-5px_7px_#222527]">
           <input
             placeholder="Search for movies"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            className="flex-1 border-none bg-[#1f2123] pr-4 text-xl font-medium text-[#a1a1a1] outline-none"
           />
           <Image
             src="/search.svg"
             alt="Search Icon"
             onClick={() => searchMovies(searchTerm)}
-            width={100}
-            height={100}
+            width={25}
+            height={25}
+            className="cursor-pointer"
           />
         </div>
 
-        <div className="container">
+        <div className="mt-12 flex w-full flex-wrap content-center items-center">
           {allMovies &&
             allMovies.map((movie: MovieType) => (
               <MovieCard key={movie.imdbID} movie={movie} />
