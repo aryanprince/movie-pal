@@ -1,7 +1,18 @@
+import Image from "next/image";
 import React from "react";
-import "../App.css";
 
-function MovieCard({ movie }) {
+interface Movie {
+  Year: string;
+  Poster: string;
+  Title: string;
+  Type: string;
+}
+
+interface Props {
+  movie: Movie;
+}
+
+const MovieCard: React.FC<Props> = ({ movie }) => {
   return (
     <div className="movie">
       <div>
@@ -9,13 +20,15 @@ function MovieCard({ movie }) {
       </div>
 
       <div>
-        <img
+        <Image
           src={
             movie.Poster !== "N/A"
               ? movie.Poster
               : "https://via.placeholder.com/400"
           }
           alt={movie.Title}
+          width={400}
+          height={400}
         />
       </div>
 
@@ -25,6 +38,6 @@ function MovieCard({ movie }) {
       </div>
     </div>
   );
-}
+};
 
 export default MovieCard;
