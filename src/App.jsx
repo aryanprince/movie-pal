@@ -8,7 +8,6 @@ const API_URL = `http://www.omdbapi.com?apikey=${process.env.REACT_APP_OMDB_API_
 function App() {
   const [allMovies, setAllMovies] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
-  const timeoutRef = useRef(null);
 
   const searchMovies = async (title) => {
     const response = await fetch(`${API_URL}&s=${title}`);
