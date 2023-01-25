@@ -29,15 +29,16 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex flex-col content-center items-center p-16">
-        <h1 className="w-fit text-5xl font-bold tracking-tight text-[#ebac95]">
+
+      <div className="flex flex-col content-center items-center p-4 lg:p-16">
+        <h1 className="mt-16 text-5xl font-extrabold tracking-tight text-[#ebac95] lg:mt-12">
           MoviePal
         </h1>
-        <h2 className="text-xl font-medium text-white">
+        <h2 className="mt-4 text-center text-xl font-medium text-white">
           Find your favourite movies and shows
         </h2>
 
-        <div className="search mx-0 mt-16 mb-8 flex w-5/12 content-center items-center rounded-3xl bg-[#1f2123] py-5 px-7 shadow-[5px_5px_7px_#1c1d1f,_-5px_-5px_7px_#222527]">
+        <div className="mx-0 mt-8 mb-8 flex w-full max-w-lg content-center items-center rounded-3xl bg-[#1f2123] py-5 px-7 shadow-[5px_5px_7px_#1c1d1f,_-5px_-5px_7px_#222527] md:max-w-xl lg:mt-16 lg:max-w-2xl">
           <input
             placeholder="Search for movies"
             value={searchTerm}
@@ -54,7 +55,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="mt-12 flex w-full flex-wrap content-center items-center">
+        <div className="mt-2 grid w-full grid-cols-2 gap-2 md:grid-cols-3 md:gap-4 lg:mt-12 lg:max-w-5xl lg:grid-cols-5">
           {allMovies &&
             allMovies.map((movie: MovieType) => (
               <MovieCard key={movie.imdbID} movie={movie} />
