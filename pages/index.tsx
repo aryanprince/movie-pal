@@ -66,6 +66,10 @@ export default function Home() {
               <MovieCard key={movie.imdbID} movie={movie} />
             ))}
         </div>
+
+        <footer>
+          This is a footer.
+        </footer>
       </div>
     </>
   )
