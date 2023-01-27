@@ -68,7 +68,7 @@ export default function Home() {
         </div>
 
         <footer>
-          This is a footer.
+          This is a footer. Test commit.
         </footer>
       </div>
     </>
