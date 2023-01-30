@@ -5,6 +5,9 @@ import { useState } from 'react'
 import type { MovieType } from '../components/MovieCard'
 import MovieCard from '../components/MovieCard'
 
+import { Search } from 'lucide-react'
+import { BsSearch } from 'react-icons/bs'
+
 export default function Home() {
   const [allMovies, setAllMovies] = useState<MovieType[]>([])
   const [searchTerm, setSearchTerm] = useState('')
@@ -28,38 +31,60 @@ export default function Home() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
       </Head>
-      <div className="flex flex-col content-center items-center p-16">
-        <h1 className="w-fit text-5xl font-bold tracking-tight text-[#ebac95]">
+
+      <div className="flex h-screen flex-col content-center items-center p-4 lg:p-16 lg:pb-0">
+        {/* HEADING */}
+        <h1 className="mt-14 text-5xl font-extrabold tracking-tight text-[#ebac95] lg:mt-12">
           MoviePal
         </h1>
-        <h2 className="text-xl font-medium text-white">
+        <h2 className="mt-6 text-center text-xl font-medium text-white">
           Find your favourite movies and shows
         </h2>
 
-        <div className="search mx-0 mt-16 mb-8 flex w-5/12 content-center items-center rounded-3xl bg-[#1f2123] py-5 px-7 shadow-[5px_5px_7px_#1c1d1f,_-5px_-5px_7px_#222527]">
+        {/* SEARCH (TEXT BOX + LOGO) */}
+        <div className="my-8 flex w-full max-w-lg content-center items-center rounded-3xl bg-[#1f2123] py-5 px-7 shadow-[5px_5px_7px_#1c1d1f,_-5px_-5px_7px_#222527] md:max-w-lg lg:mt-16 lg:max-w-xl">
           <input
             placeholder="Search for movies"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="flex-1 border-none bg-[#1f2123] pr-4 text-xl font-medium text-[#a1a1a1] outline-none"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                searchMovies(searchTerm)
+              }
+            }}
+            className="w-full border-none bg-[#1f2123] text-xl font-medium text-[#a1a1a1] outline-none"
           />
-          <Image
-            src="/search.svg"
-            alt="Search Icon"
+          <Search
+            className="cursor-pointer text-[#ebac95]"
             onClick={() => searchMovies(searchTerm)}
-            width={25}
-            height={25}
-            className="cursor-pointer"
           />
         </div>
 
-        <div className="mt-12 flex w-full flex-wrap content-center items-center">
+        {/* MOVIES */}
+        <div className="mt-2 mb-auto grid w-full grid-cols-1 gap-2 xs:grid-cols-2 md:grid-cols-3 md:gap-4 lg:mt-12 lg:max-w-5xl lg:grid-cols-5">
           {allMovies &&
             allMovies.map((movie: MovieType) => (
               <MovieCard key={movie.imdbID} movie={movie} />
             ))}
         </div>
+
+        <footer className="mt-8 mb-4 text-white lg:mb-8">
+          Made by{' '}
+          <a
+            href="https://github.com/aryanprince"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span className="underline">Aryan</span>
+          </a>
+          .
+        </footer>
       </div>
     </>
   )
